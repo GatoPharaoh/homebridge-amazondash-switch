@@ -1,0 +1,9 @@
+{
+			"platform": "cmdSwitch2",
+			"switches": [{
+					"name": "Dash Button Black",
+					"state_cmd": "ping -c 2 192.168.0.230 | grep 'rtt min'",
+					"polling": true,
+					"interval": 3
+				}
+        }
