@@ -1,4 +1,4 @@
-# homebridge-cmdswitch2 [![npm version](https://badge.fury.io/js/homebridge-cmdswitch2.svg)](https://badge.fury.io/js/homebridge-cmdswitch2)
+# homebridge-cmdswitch2 for Amazon Dash Buttons [![npm version](https://badge.fury.io/js/homebridge-cmdswitch2.svg)](https://badge.fury.io/js/homebridge-cmdswitch2)
 CMD Plugin for [HomeBridge](https://github.com/nfarina/homebridge) (API 2.0)
 
 ### How to use this plugin with Amazon Dash Buttons
