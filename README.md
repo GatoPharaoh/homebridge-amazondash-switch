@@ -4,9 +4,9 @@ CMD Plugin for [HomeBridge](https://github.com/nfarina/homebridge) (API 2.0)
 ### How to use this plugin with Amazon Dash Buttons
 In order to use this plugin with Amazon Dash Buttons you need to do the following things:
 1. find the MAC adresse of your Amazon Dash Button(s)
-  - via your router dashboard where the MAC adresse of your Dash Button should show up
-    or
-  - via [node-dash-button](https://github.com/hortinstein/node-dash-button)
+   - via your router dashboard where the MAC adresse of your Dash Button should show up
+      or
+   - via [node-dash-button](https://github.com/hortinstein/node-dash-button)
 2. Assign your Dash a fixed IP adress (e.g. 192.168.0.230 - depends on your network)
 3. leave on and off command empty - just state the line state_cmd (see Advanced Configuration and config-sample.json)
 4. go to the HomeKit app of your choice and go to the automation tab
@@ -16,6 +16,8 @@ In order to use this plugin with Amazon Dash Buttons you need to do the followin
 8. DONE
 
 ### What this plugin does
+Besides the functions intended by the main developer (see below) is plugin is ablet to Ping your Amazon Dash Button. This makes HomeKit know if a Dash Button has been pressed.
+
 This plugin allows you to run Command Line Interface (CLI) commands via HomeKit. This means you can run a simple commands such as `ping`, `shutdown`, or `wakeonlan` just by telling Siri to do so. An example usage for this plugin would be to turn on your PS4 or HTPC, check if it’s on, and even shut it down when finished.
 
 ### How this plugin works
