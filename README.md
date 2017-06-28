@@ -1,10 +1,19 @@
 # homebridge-cmdswitch2 [![npm version](https://badge.fury.io/js/homebridge-cmdswitch2.svg)](https://badge.fury.io/js/homebridge-cmdswitch2)
 CMD Plugin for [HomeBridge](https://github.com/nfarina/homebridge) (API 2.0)
 
-Older version using API 1.0: [homebridge-cmdswitch](https://github.com/luisiam/homebridge-cmdswitch) (deprecated)
-
-### Switching from homebridge-cmdswitch (API 1.0)
-Users switching from homebridge-cmdswitch will need to remove their old config in `config.json` and use the new config. Hence, switch will show up as brand new device. This is due to the fact that API 2.0 only supports platform plugins and homebridge-cmdswitch was implemented as an accessory plugin. This means any configurations, alarms, scenes, etc to which the switch was associated will need to be updated with the new switch device.
+### How to use this plugin with Amazon Dash Buttons
+In order to use this plugin with Amazon Dash Buttons you need to do the following things:
+1. find the MAC adresse of your Amazon Dash Button(s)
+  - via your router dashboard where the MAC adresse of your Dash Button should show up
+    or
+  - via [node-dash-button](https://github.com/hortinstein/node-dash-button)
+2. Assign your Dash a fixed IP adress (e.g. 192.168.0.230 - depends on your network)
+3. leave on and off command empty - just state the line state_cmd (see Advanced Configuration and config-sample.json)
+4. go to the HomeKit app of your choice and go to the automation tab
+5. create a new automation and use "an Accessory is Controlled"
+6. choose your Dash Button as Accessory and press active
+7. choose your lamp, plug, etc. to be controlled.
+8. DONE
 
 ### What this plugin does
 This plugin allows you to run Command Line Interface (CLI) commands via HomeKit. This means you can run a simple commands such as `ping`, `shutdown`, or `wakeonlan` just by telling Siri to do so. An example usage for this plugin would be to turn on your PS4 or HTPC, check if it’s on, and even shut it down when finished.
@@ -39,20 +48,11 @@ This step is not required. HomeBridge with API 2.0 can handle configurations in 
     "platform": "cmdSwitch2",
     "name": "CMD Switch",
     "switches": [{
-        "name" : "HTPC",
-        "on_cmd": "wakeonlan XX:XX:XX:XX:XX:XX",
-        "off_cmd": "net rpc shutdown -I XXX.XXX.XXX.XXX -U user%password",
-        "state_cmd": "ping -c 2 -W 1 XXX.XXX.XXX.XXX | grep -i '2 received'"
-    }, {
-        "name" : "Playstation 4",
-        "on_cmd": "ps4-waker",
-        "off_cmd": "ps4-waker standby",
-        "state_cmd": "ps4-waker search | grep -i '200 Ok'",
+        "name" : "Dash Button Black",
+        "state_cmd": "ping -c 2 192.168.0.230 | grep 'rtt min'",
         "polling": true,
-        "interval": 5,
-        "manufacturer": "Sony Corporation",
-        "model": "CUH-1001A",
-        "serial": "XXXXXXXXXXX"
+        "interval": 3,
+        
     }]
 }]
 ```
