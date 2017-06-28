@@ -15,7 +15,9 @@ In order to use this plugin with Amazon Dash Buttons you need to do the followin
 8. DONE
 
 ### What this plugin does
-Besides the functions intended by the main developer (see below) is plugin is ablet to Ping your Amazon Dash Button. This makes HomeKit know if a Dash Button has been pressed.
+Besides the functions intended by the main developer (see below) this plugin is able to Ping your Amazon Dash Button. This makes HomeKit know if a Dash Button has been pressed.
+
+------
 
 This plugin allows you to run Command Line Interface (CLI) commands via HomeKit. This means you can run a simple commands such as `ping`, `shutdown`, or `wakeonlan` just by telling Siri to do so. An example usage for this plugin would be to turn on your PS4 or HTPC, check if it’s on, and even shut it down when finished.
 
