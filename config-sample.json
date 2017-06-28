@@ -6,4 +6,5 @@
 					"polling": true,
 					"interval": 3
 				}
-        }
+        ]
+}
