@@ -5,7 +5,6 @@ CMD Plugin for [HomeBridge](https://github.com/nfarina/homebridge) (API 2.0)
 In order to use this plugin with Amazon Dash Buttons you need to do the following things:
 1. find the MAC adresse of your Amazon Dash Button(s)
    - via your router dashboard where the MAC adresse of your Dash Button should show up
-      or
    - via [node-dash-button](https://github.com/hortinstein/node-dash-button)
 2. Assign your Dash a fixed IP adress (e.g. 192.168.0.230 - depends on your network)
 3. leave on and off command empty - just state the line state_cmd (see Advanced Configuration and config-sample.json)
