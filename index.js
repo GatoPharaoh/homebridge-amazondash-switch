@@ -7,12 +7,12 @@ module.exports = function (homebridge) {
   Characteristic = homebridge.hap.Characteristic;
   UUIDGen = homebridge.hap.uuid;
 
-  homebridge.registerPlatform("homebridge-cmdswitch2", "cmdSwitch2", cmdSwitchPlatform, true);
+  homebridge.registerPlatform("homebridge-WindowSwitch", "WindowSwitch", cmdSwitchPlatform, true);
 }
 
 function cmdSwitchPlatform(log, config, api) {
   this.log = log;
-  this.config = config || {"platform": "cmdSwitch2"};
+  this.config = config || {"platform": "WindowSwitch"};
   this.switches = this.config.switches || [];
 
   this.accessories = {};
@@ -55,7 +55,7 @@ cmdSwitchPlatform.prototype.addAccessory = function (data) {
     accessory = new Accessory(data.name, uuid, 8);
 
     // Setup HomeKit switch service
-    accessory.addService(Service.Switch, data.name);
+    accessory.addService(Window.Switch, data.name);
 
     // New accessory is always reachable
     accessory.reachable = true;
@@ -64,7 +64,7 @@ cmdSwitchPlatform.prototype.addAccessory = function (data) {
     this.setService(accessory);
 
     // Register new accessory in HomeKit
-    this.api.registerPlatformAccessories("homebridge-cmdswitch2", "cmdSwitch2", [accessory]);
+    this.api.registerPlatformAccessories("homebridge-WindowSwitch", "WindowSwitch", [accessory]);
 
     // Store accessory in cache
     this.accessories[data.name] = accessory;
@@ -105,14 +105,14 @@ cmdSwitchPlatform.prototype.removeAccessory = function (accessory) {
   if (accessory) {
     var name = accessory.context.name;
     this.log(name + " is removed from HomeBridge.");
-    this.api.unregisterPlatformAccessories("homebridge-cmdswitch2", "cmdSwitch2", [accessory]);
+    this.api.unregisterPlatformAccessories("homebridge-WindowSwitch", "WindowSwitch", [accessory]);
     delete this.accessories[name];
   }
 }
 
 // Method to setup listeners for different events
 cmdSwitchPlatform.prototype.setService = function (accessory) {
-  accessory.getService(Service.Switch)
+  accessory.getService(Service.Window)
     .getCharacteristic(Characteristic.On)
     .on('get', this.getPowerState.bind(this, accessory.context))
     .on('set', this.setPowerState.bind(this, accessory.context));
@@ -134,7 +134,7 @@ cmdSwitchPlatform.prototype.getInitState = function (accessory) {
 
   // Retrieve initial state if polling is disabled
   if (!accessory.context.polling) {
-    accessory.getService(Service.Switch)
+    accessory.getService(Service.Window)
       .getCharacteristic(Characteristic.On)
       .getValue();
   }
