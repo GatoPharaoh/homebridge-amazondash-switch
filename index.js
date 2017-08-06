@@ -55,7 +55,7 @@ cmdSwitchPlatform.prototype.addAccessory = function (data) {
     accessory = new Accessory(data.name, uuid, 8);
 
     // Setup HomeKit switch service
-    accessory.addService(Window.Switch, data.name);
+    accessory.addService(Service.Window, data.name);
 
     // New accessory is always reachable
     accessory.reachable = true;
